@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is Namaste React By Sajin",
+  "keywords": [],
+  "homepage": "https://github.com/saju2468/namaste-react#readme",
+  "bugs": {
+    "url": "https://github.com/saju2468/namaste-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saju2468/namaste-react.git"
+  },
+  "license": "ISC",
+  "author": "Sajin",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  }
+}
