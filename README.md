@@ -29,3 +29,15 @@
 
   -useState()
   -useEffect()
+
+
+  # 2 types of Components
+
+  1. Class Components
+  2. Functional Components
+
+
+  # 2 types of routing
+
+  1. Client Side Routing - React Router
+  2. Server Side Routing - Next.js
