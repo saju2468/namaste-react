@@ -1,6 +1,7 @@
 import RestaurantCard from "../components/RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
@@ -14,10 +15,12 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
     );
 
     const json = await data.json();
+
+    console.log(json);
 
     setListOfRestaurant(
       json?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
@@ -31,6 +34,17 @@ const Body = () => {
       ),
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if (onlineStatus === false) {
+    return (
+      <div className="offline-screen">
+        <h1>You are offline! Please check your internet connection</h1>
+        <p>turn on the internet and try again</p>
+      </div>
+    );
+  }
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
@@ -76,7 +90,7 @@ const Body = () => {
         </div>
         <div className="restaurant_wrapper">
           {filteredRestaurant.map((restaurant) => (
-            <RestaurantCard key={restaurant.name} RestaurantData={restaurant} />
+            <RestaurantCard key={restaurant.id} RestaurantData={restaurant} />
           ))}
         </div>
       </div>

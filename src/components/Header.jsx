@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const Header = () => {
   const [loginBtn, setloginBtn] = useState("login");
 
   useEffect(() => {
     console.log("Header Component Re-rendered");
   }, []);
+
+  const onlineStatus = useOnlineStatus();
 
   return (
     <header>
@@ -23,6 +26,12 @@ const Header = () => {
               </li>
               <li>
                 <Link to="/contact">Contact Us</Link>
+              </li>
+              <li>
+                <Link to="/grocery">Grocery</Link>
+              </li>
+              <li>
+                online status : <span>{onlineStatus ? "✅" : "❌"}</span>
               </li>
             </ul>
           </nav>
